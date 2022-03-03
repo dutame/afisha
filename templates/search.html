@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+<h1>Поиск</h1>
+<form action="/search/" metod="get">
+    <input type="text" placeholder="введите данные" name="search">
+    <input type="number" placeholder="from price" name="from_price">
+    <input type="number" placeholder="to price" name="to_price">
+    <select name="category_id">
+        <option value="">All categories</option>
+        {% for category in categories %}
+        <option value="{{ category.id }}">
+            {{ category.name }}
+        </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Отправить</button>
+</form>
+{% for movie in movie_list %}
+    <h5>ID : {{ movie.id }}</h5>
+    <a href="/movie/{{ movie.id }}/">Фильм: {{ movie.title }}</a>
+    <p>Кинотеатр: {{ movie.cinema }}</p>
+    <hr/>
+{% endfor %}
+</body>
+</html>

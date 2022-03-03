@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie List</title>
+</head>
+<body>
+<h1>Фильмы</h1>
+{% for movie in movie_list %}
+    <h5>ID : {{ movie.id }}</h5>
+    <a href="/movie/{{ movie.id }}/">Фильм: {{ movie.title }}</a>
+    <p>Кинотеатр: {{ movie.cinema }}</p>
+    <hr/>
+{% endfor %}
+</body>
+</html>
