@@ -12,6 +12,13 @@ def index(request):
     return render(request, 'index.html', context=data)
 
 
+def test(request):
+    data = {
+        "title": 'Matrix 4',
+    }
+    return render(request, 'test.html', context=data)
+
+
 def detail(request, id):
     movie = Movie.objects.get(id=id)
     data = {
