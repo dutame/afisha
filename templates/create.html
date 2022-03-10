@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+    <form action="/create/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Создать страницу фильма</button>
+    </form>
+{% endblock %}

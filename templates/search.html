@@ -3,7 +3,7 @@
 {% block title %}Поиск{% endblock %}
 
 {% block content %}
-    <div class="card" style="auto">
+    <div class="card" style="grid-auto-columns: auto">
         <img src="{% static 'img/logo2.jpg' %}" class="card-img-top" alt="...">
         <div class="card-body">
             <h4 class="card-title"><b>{{ movie.title }}</b></h4>
@@ -16,12 +16,12 @@
                 <select name="category_id">
                     <option value="">В категории</option>
                     {% for category in categories %}
-                        <option value="{{ category.id }}">
-                            {{ category.name }}
-                        </option>
+                    <option value="{{ category.id }}">
+                        {{ category.name }}
+                    </option>
                     {% endfor %}
                 </select>
-                <button type="submit">Найти</button>
+                <button type="submit" class="btn btn-success">Найти</button>
             </form>
             </p>
         </div>

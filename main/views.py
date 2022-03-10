@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from main.models import Movie, Category
+from main.forms import MovieCreateForm
 
 
 # Create your views here.
@@ -29,7 +30,6 @@ def detail(request, id):
 
 def search(request):
     word = request.GET.get('search', '')
-
     if request.GET.get('from_price', '') == '':
         from_price = 0
     else:
@@ -53,3 +53,17 @@ def search(request):
         'categories': Category.objects.all()
     }
     return render(request, 'search.html', context=data)
+
+
+def create_movie(request):
+    if request.method == 'POST':
+        form = MovieCreateForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            return render(request, 'create.html', context={'form': form})
+    context = {
+        'form': MovieCreateForm
+    }
+    return render(request, 'create.html', context=context)
