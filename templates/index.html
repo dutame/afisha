@@ -5,19 +5,19 @@
 {% block content %}
     <h1>Фильмы</h1>
     {% for movie in movie_list %}
-{#        <h5>ID : {{ movie.id }}</h5>#}
-{#        <a href="/movie/{{ movie.id }}/">Фильм: {{ movie.title }}</a>#}
-{#        <p>Кинотеатр: {{ movie.cinema }}</p>#}
-{#        <hr/>#}
-<div class="card" style="width: 18rem;">
-    <img src="{% static 'img/logo2.jpg' %}" style="width: 287px; height: 70px" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title"><b>{{ movie.title }}</b></h5>
-        <p class="card-text">
-        <p>Кинотеатр: {{ movie.cinema }}</p>
-        </p>
-        <a href="/movie/{{ movie.id }}" class="btn btn-primary">Подробнее о фильме</a>
-    </div>
-</div>
-{% endfor %}
+        {#        <h5>ID : {{ movie.id }}</h5>#}
+        {#        <a href="/movie/{{ movie.id }}/">Фильм: {{ movie.title }}</a>#}
+        {#        <p>Кинотеатр: {{ movie.cinema }}</p>#}
+        {#        <hr/>#}
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'img/logo2.jpg' %}" style="width: 287px; height: 70px" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><b>{{ movie.title }}</b></h5>
+                <p class="card-text">
+                <p>Кинотеатр: {{ movie.cinema }}</p>
+                </p>
+                <a href="/movie/{{ movie.id }}" class="btn btn-primary">Подробнее о фильме</a>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

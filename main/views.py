@@ -29,7 +29,7 @@ def detail(request, id):
 
 def search(request):
     word = request.GET.get('search', '')
-    category_id = None
+
     if request.GET.get('from_price', '') == '':
         from_price = 0
     else:
@@ -38,6 +38,7 @@ def search(request):
         to_price = 1000000000
     else:
         to_price = int(request.GET.get('to_price'))
+    category_id = None
     try:
         category_id = int(request.GET.get('category_id'))
     except:

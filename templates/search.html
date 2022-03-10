@@ -3,19 +3,33 @@
 {% block title %}Поиск{% endblock %}
 
 {% block content %}
-<h1>Поиск</h1>
-<form action="/search/" metod="get">
-    <input type="text" placeholder="Введите название фильма" name="search">
-    <input type="number" placeholder="Мин. стоимость билета" name="from_price">
-    <input type="number" placeholder="Мак. стоимость билета" name="to_price">
-    <select name="category_id">
-        <option value="">Категория фильмов</option>
-        {% for category in categories %}
-        <option value="{{ category.id }}">
-            {{ category.name }}
-        </option>
-        {% endfor %}
-    </select>
-    <button type="submit">Отправить</button>
-</form>
+    <div class="card" style="auto">
+        <img src="{% static 'img/logo2.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h4 class="card-title"><b>{{ movie.title }}</b></h4>
+            <p class="card-text">
+            <h3>Поиск фильмов</h3>
+            <form action="/search/" metod="get">
+                <input type="text" placeholder="введите данные" name="search">
+                <input type="number" placeholder="from price" name="from_price">
+                <input type="number" placeholder="to price" name="to_price">
+                <select name="category_id">
+                    <option value="">В категории</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">
+                            {{ category.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Найти</button>
+            </form>
+            </p>
+        </div>
+    </div>
 {% endblock %}
+{#    {% for movie in movie_list %}#}
+{#        <a href="/movie/{{ movie.id }}/">Фильм: {{ movie.title }}</a>#}
+{#        <p>Кинотеатр: {{ movie.cinema }}</p>#}
+{#        <hr/>#}
+{#    {% endfor %}#}
+{#{% endblock %}#}
