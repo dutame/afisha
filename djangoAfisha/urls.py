@@ -23,5 +23,7 @@ urlpatterns = [
     path('', views.index),
     path('movie/<int:id>/', views.detail),
     path('search/',views.search),
-    path('create/', views.create_movie)
+    path('create/', views.create_movie),
+    path('logout/', views.logout_view),
+    path('login/', views.login_view),
 ]

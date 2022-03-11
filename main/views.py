@@ -1,6 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from main.models import Movie, Category
 from main.forms import MovieCreateForm
+from django.contrib.auth import logout, login, authenticate
 
 
 # Create your views here.
@@ -55,6 +57,7 @@ def search(request):
     return render(request, 'search.html', context=data)
 
 
+@login_required(login_url='/login')
 def create_movie(request):
     if request.method == 'POST':
         form = MovieCreateForm(data=request.POST)
@@ -67,3 +70,24 @@ def create_movie(request):
         'form': MovieCreateForm
     }
     return render(request, 'create.html', context=context)
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
+
+
+def login_view(request):
+    context = {}
+    next_url = request.GET.get('next', '/')
+    context['next'] = next_url
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        if user:
+            login(request, user)
+            return redirect(next_url)
+        else:
+            context['error'] = 'Неправильные имя и пароль'
+    return render(request, 'login.html', context=context)
