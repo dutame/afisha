@@ -16,9 +16,9 @@
                 <select name="category_id">
                     <option value="">В категории</option>
                     {% for category in categories %}
-                    <option value="{{ category.id }}">
-                        {{ category.name }}
-                    </option>
+                        <option value="{{ category.id }}">
+                            {{ category.name }}
+                        </option>
                     {% endfor %}
                 </select>
                 <button type="submit" class="btn btn-success">Найти</button>
@@ -26,10 +26,11 @@
             </p>
         </div>
     </div>
+    <br>
+    <p></p>
+    {% for movie in movie_list %}
+        <a href="/movie/{{ movie.id }}/">Фильм: {{ movie.title }}</a>
+        <p>Кинотеатр: {{ movie.cinema }}</p>
+        <hr/>
+    {% endfor %}
 {% endblock %}
-{#    {% for movie in movie_list %}#}
-{#        <a href="/movie/{{ movie.id }}/">Фильм: {{ movie.title }}</a>#}
-{#        <p>Кинотеатр: {{ movie.cinema }}</p>#}
-{#        <hr/>#}
-{#    {% endfor %}#}
-{#{% endblock %}#}

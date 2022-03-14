@@ -77,4 +77,4 @@ class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True, verbose_name='Фильм')
 
     def __str__(self):
-        return self.description
+        return self.title
